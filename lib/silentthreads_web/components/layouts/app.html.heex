@@ -1,8 +1,10 @@
-<header class="p-5">
-  <h1 class="flex items-center gap-4 text-gray-100 font-medium text-xl">
-    <img src={~p"/images/logo.svg"} alt="SilentThreads" class="size-11" />
-    SilentThreads
-  </h1>
-</header>
-<.flash_group flash={@flash} />
-{@inner_content}
+<div class="flex flex-col h-screen">
+  <header class="p-5">
+    <h1 class="flex items-center gap-4 text-gray-100 font-medium text-xl">
+      <img src={~p"/images/logo.svg"} alt="SilentThreads" class="size-11" />
+      SilentThreads
+    </h1>
+  </header>
+  <.flash_group flash={@flash} />
+  {@inner_content}
+</div>
