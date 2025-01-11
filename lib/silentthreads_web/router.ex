@@ -1,11 +1,11 @@
-defmodule SilentthreadsWeb.Router do
-  use SilentthreadsWeb, :router
+defmodule SilentThreadsWeb.Router do
+  use SilentThreadsWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {SilentthreadsWeb.Layouts, :root}
+    plug :put_root_layout, html: {SilentThreadsWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,14 +14,14 @@ defmodule SilentthreadsWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", SilentthreadsWeb do
+  scope "/", SilentThreadsWeb do
     pipe_through :browser
 
     get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SilentthreadsWeb do
+  # scope "/api", SilentThreadsWeb do
   #   pipe_through :api
   # end
 
@@ -37,7 +37,7 @@ defmodule SilentthreadsWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: SilentthreadsWeb.Telemetry
+      live_dashboard "/dashboard", metrics: SilentThreadsWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end

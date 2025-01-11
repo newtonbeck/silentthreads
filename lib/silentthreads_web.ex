@@ -1,12 +1,12 @@
-defmodule SilentthreadsWeb do
+defmodule SilentThreadsWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use SilentthreadsWeb, :controller
-      use SilentthreadsWeb, :html
+      use SilentThreadsWeb, :controller
+      use SilentThreadsWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,9 +40,9 @@ defmodule SilentthreadsWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: SilentthreadsWeb.Layouts]
+        layouts: [html: SilentThreadsWeb.Layouts]
 
-      use Gettext, backend: SilentthreadsWeb.Gettext
+      use Gettext, backend: SilentThreadsWeb.Gettext
 
       import Plug.Conn
 
@@ -53,7 +53,7 @@ defmodule SilentthreadsWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {SilentthreadsWeb.Layouts, :app}
+        layout: {SilentThreadsWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -83,12 +83,12 @@ defmodule SilentthreadsWeb do
   defp html_helpers do
     quote do
       # Translation
-      use Gettext, backend: SilentthreadsWeb.Gettext
+      use Gettext, backend: SilentThreadsWeb.Gettext
 
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components
-      import SilentthreadsWeb.CoreComponents
+      import SilentThreadsWeb.CoreComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -101,9 +101,9 @@ defmodule SilentthreadsWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: SilentthreadsWeb.Endpoint,
-        router: SilentthreadsWeb.Router,
-        statics: SilentthreadsWeb.static_paths()
+        endpoint: SilentThreadsWeb.Endpoint,
+        router: SilentThreadsWeb.Router,
+        statics: SilentThreadsWeb.static_paths()
     end
   end
 

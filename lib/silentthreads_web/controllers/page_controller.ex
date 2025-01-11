@@ -1,5 +1,5 @@
-defmodule SilentthreadsWeb.PageController do
-  use SilentthreadsWeb, :controller
+defmodule SilentThreadsWeb.PageController do
+  use SilentThreadsWeb, :controller
 
   def home(conn, _params) do
     conn

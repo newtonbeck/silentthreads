@@ -1,5 +1,5 @@
-defmodule SilentthreadsWeb.PageControllerTest do
-  use SilentthreadsWeb.ConnCase
+defmodule SilentThreadsWeb.PageControllerTest do
+  use SilentThreadsWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

@@ -1,4 +1,4 @@
-defmodule SilentthreadsWeb.CoreComponents do
+defmodule SilentThreadsWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -15,7 +15,7 @@ defmodule SilentthreadsWeb.CoreComponents do
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
   use Phoenix.Component
-  use Gettext, backend: SilentthreadsWeb.Gettext
+  use Gettext, backend: SilentThreadsWeb.Gettext
 
   alias Phoenix.LiveView.JS
 
@@ -661,9 +661,9 @@ defmodule SilentthreadsWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(SilentthreadsWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(SilentThreadsWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(SilentthreadsWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(SilentThreadsWeb.Gettext, "errors", msg, opts)
     end
   end
 

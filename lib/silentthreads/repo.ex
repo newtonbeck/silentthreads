@@ -1,4 +1,4 @@
-defmodule Silentthreads.Repo do
+defmodule SilentThreads.Repo do
   use Ecto.Repo,
     otp_app: :silentthreads,
     adapter: Ecto.Adapters.Postgres

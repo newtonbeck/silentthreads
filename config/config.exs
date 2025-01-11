@@ -8,18 +8,18 @@
 import Config
 
 config :silentthreads,
-  ecto_repos: [Silentthreads.Repo],
+  ecto_repos: [SilentThreads.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :silentthreads, SilentthreadsWeb.Endpoint,
+config :silentthreads, SilentThreadsWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: SilentthreadsWeb.ErrorHTML, json: SilentthreadsWeb.ErrorJSON],
+    formats: [html: SilentThreadsWeb.ErrorHTML, json: SilentThreadsWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Silentthreads.PubSub,
+  pubsub_server: SilentThreads.PubSub,
   live_view: [signing_salt: "cuNJEBRY"]
 
 # Configures the mailer
@@ -29,7 +29,7 @@ config :silentthreads, SilentthreadsWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :silentthreads, Silentthreads.Mailer, adapter: Swoosh.Adapters.Local
+config :silentthreads, SilentThreads.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

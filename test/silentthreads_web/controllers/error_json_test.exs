@@ -1,12 +1,12 @@
-defmodule SilentthreadsWeb.ErrorJSONTest do
-  use SilentthreadsWeb.ConnCase, async: true
+defmodule SilentThreadsWeb.ErrorJSONTest do
+  use SilentThreadsWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert SilentthreadsWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert SilentThreadsWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
   end
 
   test "renders 500" do
-    assert SilentthreadsWeb.ErrorJSON.render("500.json", %{}) ==
+    assert SilentThreadsWeb.ErrorJSON.render("500.json", %{}) ==
              %{errors: %{detail: "Internal Server Error"}}
   end
 end

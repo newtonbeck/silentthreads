@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Silentthreads.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(SilentThreads.Repo, :manual)

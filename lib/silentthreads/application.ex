@@ -1,4 +1,4 @@
-defmodule Silentthreads.Application do
+defmodule SilentThreads.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,21 +8,21 @@ defmodule Silentthreads.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      SilentthreadsWeb.Telemetry,
-      Silentthreads.Repo,
+      SilentThreadsWeb.Telemetry,
+      SilentThreads.Repo,
       {DNSCluster, query: Application.get_env(:silentthreads, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: Silentthreads.PubSub},
+      {Phoenix.PubSub, name: SilentThreads.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: Silentthreads.Finch},
-      # Start a worker by calling: Silentthreads.Worker.start_link(arg)
-      # {Silentthreads.Worker, arg},
+      {Finch, name: SilentThreads.Finch},
+      # Start a worker by calling: SilentThreads.Worker.start_link(arg)
+      # {SilentThreads.Worker, arg},
       # Start to serve requests, typically the last entry
-      SilentthreadsWeb.Endpoint
+      SilentThreadsWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Silentthreads.Supervisor]
+    opts = [strategy: :one_for_one, name: SilentThreads.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule Silentthreads.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    SilentthreadsWeb.Endpoint.config_change(changed, removed)
+    SilentThreadsWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

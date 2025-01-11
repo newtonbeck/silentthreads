@@ -1,4 +1,4 @@
-defmodule Silentthreads.DataCase do
+defmodule SilentThreads.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Silentthreads.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Silentthreads.DataCase, async: true`, although
+  by setting `use SilentThreads.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,17 +18,17 @@ defmodule Silentthreads.DataCase do
 
   using do
     quote do
-      alias Silentthreads.Repo
+      alias SilentThreads.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Silentthreads.DataCase
+      import SilentThreads.DataCase
     end
   end
 
   setup tags do
-    Silentthreads.DataCase.setup_sandbox(tags)
+    SilentThreads.DataCase.setup_sandbox(tags)
     :ok
   end
 
@@ -36,7 +36,7 @@ defmodule Silentthreads.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Silentthreads.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(SilentThreads.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 

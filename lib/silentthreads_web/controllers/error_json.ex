@@ -1,4 +1,4 @@
-defmodule SilentthreadsWeb.ErrorJSON do
+defmodule SilentThreadsWeb.ErrorJSON do
   @moduledoc """
   This module is invoked by your endpoint in case of errors on JSON requests.
 
