@@ -1,12 +1,12 @@
 defmodule SilentThreadsWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :silentthreads
+  use Phoenix.Endpoint, otp_app: :silent_threads
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_silentthreads_key",
+    key: "_silent_threads_key",
     signing_salt: "II3zB+X7",
     same_site: "Lax"
   ]
@@ -21,7 +21,7 @@ defmodule SilentThreadsWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :silentthreads,
+    from: :silent_threads,
     gzip: false,
     only: SilentThreadsWeb.static_paths()
 
@@ -31,7 +31,7 @@ defmodule SilentThreadsWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :silentthreads
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :silent_threads
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,

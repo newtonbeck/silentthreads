@@ -3,7 +3,7 @@ defmodule SilentThreads.MixProject do
 
   def project do
     [
-      app: :silentthreads,
+      app: :silent_threads,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -74,10 +74,10 @@ defmodule SilentThreads.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind silentthreads", "esbuild silentthreads"],
+      "assets.build": ["tailwind silent_threads", "esbuild silent_threads"],
       "assets.deploy": [
-        "tailwind silentthreads --minify",
-        "esbuild silentthreads --minify",
+        "tailwind silent_threads --minify",
+        "esbuild silent_threads --minify",
         "phx.digest"
       ]
     ]

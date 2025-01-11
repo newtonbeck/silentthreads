@@ -21,5 +21,5 @@ defmodule SilentThreadsWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext.Backend, otp_app: :silentthreads
+  use Gettext.Backend, otp_app: :silent_threads
 end

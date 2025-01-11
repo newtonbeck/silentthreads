@@ -1,11 +1,11 @@
 import Config
 
 # Configure your database
-config :silentthreads, SilentThreads.Repo,
+config :silent_threads, SilentThreads.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "silentthreads_dev",
+  database: "silent_threads_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -16,7 +16,7 @@ config :silentthreads, SilentThreads.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :silentthreads, SilentThreadsWeb.Endpoint,
+config :silent_threads, SilentThreadsWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -25,8 +25,8 @@ config :silentthreads, SilentThreadsWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "48oIo2N2e3/bBvFvXzPC3Bj6U2GorYYRy9H9R91F/t8WP/RxL+XtFLqBavqUih7s",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:silentthreads, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:silentthreads, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:silent_threads, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:silent_threads, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -53,17 +53,17 @@ config :silentthreads, SilentThreadsWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :silentthreads, SilentThreadsWeb.Endpoint,
+config :silent_threads, SilentThreadsWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/silentthreads_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/silent_threads_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :silentthreads, dev_routes: true
+config :silent_threads, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

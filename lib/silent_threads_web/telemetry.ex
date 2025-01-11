@@ -52,23 +52,23 @@ defmodule SilentThreadsWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("silentthreads.repo.query.total_time",
+      summary("silent_threads.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("silentthreads.repo.query.decode_time",
+      summary("silent_threads.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("silentthreads.repo.query.query_time",
+      summary("silent_threads.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("silentthreads.repo.query.queue_time",
+      summary("silent_threads.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("silentthreads.repo.query.idle_time",
+      summary("silent_threads.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"

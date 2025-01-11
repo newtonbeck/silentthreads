@@ -10,7 +10,7 @@ defmodule SilentThreads.Application do
     children = [
       SilentThreadsWeb.Telemetry,
       SilentThreads.Repo,
-      {DNSCluster, query: Application.get_env(:silentthreads, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:silent_threads, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: SilentThreads.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: SilentThreads.Finch},

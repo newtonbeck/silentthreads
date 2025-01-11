@@ -1,4 +1,4 @@
-defmodule Silentthreads.Repo.Migrations.CreateParticipants do
+defmodule SilentThreads.Repo.Migrations.CreateParticipants do
   use Ecto.Migration
 
   def change do

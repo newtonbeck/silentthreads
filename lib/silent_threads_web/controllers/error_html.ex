@@ -10,8 +10,8 @@ defmodule SilentThreadsWeb.ErrorHTML do
   # uncomment the embed_templates/1 call below
   # and add pages to the error directory:
   #
-  #   * lib/silentthreads_web/controllers/error_html/404.html.heex
-  #   * lib/silentthreads_web/controllers/error_html/500.html.heex
+  #   * lib/silent_threads_web/controllers/error_html/404.html.heex
+  #   * lib/silent_threads_web/controllers/error_html/500.html.heex
   #
   # embed_templates "error_html/*"
 
