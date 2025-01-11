@@ -20,6 +20,13 @@ defmodule SilentThreadsWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/rooms", SilentThreadsWeb do
+    pipe_through :browser
+
+    post "/", RoomController, :create
+    get "/:id", RoomController, :show
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SilentThreadsWeb do
   #   pipe_through :api

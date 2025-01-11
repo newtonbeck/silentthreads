@@ -1,4 +1,4 @@
-defmodule SilentThreads.Room do
+defmodule SilentThreads.Domain.Model.Room do
   use Ecto.Schema
   import Ecto.Changeset
 

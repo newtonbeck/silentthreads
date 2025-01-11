@@ -1,4 +1,4 @@
-defmodule SilentThreads.Participant do
+defmodule SilentThreads.Domain.Model.Participant do
   use Ecto.Schema
   import Ecto.Changeset
 
