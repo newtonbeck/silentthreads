@@ -4,9 +4,12 @@ defmodule SilentThreadsWeb.RoomController do
 
   use SilentThreadsWeb, :controller
 
-  def create(conn, params) do
-    room = CreateRoom.create_room(params)
-    conn |> redirect(to: ~p"/rooms/#{room.id}")
+  def create(conn, %{"nickname" => nickname}) do
+    with {:ok, room, _participant} <- CreateRoom.create_room(%{nickname: nickname}) do
+      conn |> redirect(to: ~p"/rooms/#{room.id}")
+    else
+      {:error, _} -> conn |> put_flash(:error, "Failed to create room") |> redirect(to: "/")
+    end
   end
 
   def show(conn, _params) do
