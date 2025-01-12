@@ -17,13 +17,13 @@ defmodule SilentThreadsWeb.Router do
   scope "/", SilentThreadsWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", HomeController, :index
+    post "/", HomeController, :start_room
   end
 
-  scope "/rooms", SilentThreadsWeb do
+  scope "/room", SilentThreadsWeb do
     pipe_through :browser
 
-    post "/", RoomController, :start
     get "/:id", RoomController, :show
   end
 
