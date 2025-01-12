@@ -1,14 +1,14 @@
 defmodule SilentThreadsWeb.RoomController do
 
-  alias SilentThreads.Domain.UseCase.CreateRoom
+  alias SilentThreads.Domain.UseCase.StartRoom
 
   use SilentThreadsWeb, :controller
 
-  def create(conn, %{"nickname" => nickname}) do
-    with {:ok, room, _participant} <- CreateRoom.create_room(%{nickname: nickname}) do
-      conn |> redirect(to: ~p"/rooms/#{room.id}")
-    else
-      {:error, _} -> conn |> put_flash(:error, "Failed to create room") |> redirect(to: "/")
+  def start(conn, %{"nickname" => nickname}) do
+    case StartRoom.start(%{nickname: nickname}) do
+      {:ok, room, _participant} -> conn |> redirect(to: ~p"/rooms/#{room.id}")
+      {:error, {:validation, validation_errors}} -> conn |> put_layout(html: :app) |> render(:home, validation_errors: validation_errors)
+      _ -> conn |> put_layout(html: :app) |> render(:home, global_error: "Ops, something went wrong")
     end
   end
 

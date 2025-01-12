@@ -1,4 +1,4 @@
-defmodule SilentThreads.Repo.Migrations.CreateRooms do
+defmodule SilentThreads.Repo.Migrations.StartRooms do
   use Ecto.Migration
 
   def change do

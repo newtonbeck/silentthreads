@@ -23,7 +23,7 @@ defmodule SilentThreadsWeb.Router do
   scope "/rooms", SilentThreadsWeb do
     pipe_through :browser
 
-    post "/", RoomController, :create
+    post "/", RoomController, :start
     get "/:id", RoomController, :show
   end
 

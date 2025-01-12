@@ -13,5 +13,6 @@ defmodule SilentThreads.Domain.Model.Participant do
     participant
     |> cast(attrs, [:nickname])
     |> validate_required([:nickname])
+    |> validate_length(:nickname, min: 3, max: 50)
   end
 end
