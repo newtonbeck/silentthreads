@@ -13,7 +13,7 @@ defmodule SilentThreadsWeb.HomeController do
 
   def start_room(conn, %{"nickname" => nickname}) do
     case StartRoom.start(%{nickname: nickname}) do
-      {:ok, room, _participant} -> conn |> redirect(to: ~p"/room/#{room.id}")
+      {:ok, {room, _participant}} -> conn |> redirect(to: ~p"/room/#{room.id}")
       {:error, %Ecto.Changeset{} = changeset} -> conn |> put_layout(html: :app) |> render(:index, changeset: changeset)
     end
   end
