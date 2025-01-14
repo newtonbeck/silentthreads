@@ -9,10 +9,8 @@ defmodule SilentThreads.Domain.UseCase.StartRoom do
            {:ok, participant} <- Participants.join(room, attrs) do
         {room, participant}
       else
-        {:error, %{valid?: false, errors: errors}} ->
-          Repo.rollback({:validation, errors})
         {:error, e} ->
-          Repo.rollback({:unknown, e})
+          Repo.rollback(e)
       end
     end)
   end
