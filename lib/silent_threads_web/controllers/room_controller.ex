@@ -9,7 +9,7 @@ defmodule SilentThreadsWeb.RoomController do
       {:ok, %{room: room, participants: participants, messages: messages}} ->
         conn
         |> put_layout(html: :app)
-        |> render(:show, room: room, participants: participants, messages: messages)
+        |> render(:show, room: room, participants: participants, messages: messages, current_participant: %{id: 30})
       {:error, _} ->
         conn
         |> put_flash(:error, "Room not found")
