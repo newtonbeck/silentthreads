@@ -88,4 +88,44 @@ defmodule SilentThreadsWeb.Controllers.RoomHtml.ViewHelperTest do
     end
   end
 
+  describe "own_participant_article_class" do
+    test "it should align elements on the right when message's author is from current participant" do
+      message_author = %{id: 1}
+      current_participant = %{id: 1}
+
+      class = ViewHelper.own_participant_article_class(message_author, current_participant)
+
+      assert class == %{class: "flex flex-col items-end mb-4"}
+    end
+
+    test "it should not align elements when message's author is another participant" do
+      message_author = %{id: 2}
+      current_participant = %{id: 1}
+
+      class = ViewHelper.own_participant_article_class(message_author, current_participant)
+
+      assert class == %{class: "mb-4"}
+    end
+  end
+
+  describe "own_participant_ul_class" do
+    test "it should align elements on the right when message's author is from current participant" do
+      message_author = %{id: 1}
+      current_participant = %{id: 1}
+
+      class = ViewHelper.own_participant_ul_class(message_author, current_participant)
+
+      assert class == %{class: "flex flex-col items-end gap-4"}
+    end
+
+    test "it should not align elements when message's author is another participant" do
+      message_author = %{id: 2}
+      current_participant = %{id: 1}
+
+      class = ViewHelper.own_participant_ul_class(message_author, current_participant)
+
+      assert class == %{class: "flex flex-col gap-4"}
+    end
+  end
+
 end
