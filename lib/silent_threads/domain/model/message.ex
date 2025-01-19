@@ -16,5 +16,7 @@ defmodule SilentThreads.Domain.Model.Message do
     message
     |> cast(attrs, [:author_id, :room_id, :content, :type])
     |> validate_required([:author_id, :room_id, :content, :type])
+    |> validate_length(:content, max: 255)
+    |> validate_subset(:type, ["participant", "system"])
   end
 end
