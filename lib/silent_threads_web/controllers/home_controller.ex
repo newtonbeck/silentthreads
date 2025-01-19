@@ -2,13 +2,15 @@ defmodule SilentThreadsWeb.HomeController do
   use SilentThreadsWeb, :controller
 
   alias SilentThreads.Domain.UseCase.StartRoom
-  alias SilentThreads.Domain.Model.Participant
 
   def index(conn, _params) do
-    changeset = Participant.changeset(%Participant{}, %{})
+    empty_changeset = %{
+      valid?: true,
+      params: %{},
+    }
     conn
       |> put_layout(html: :app)
-      |> render(:index, changeset: changeset)
+      |> render(:index, changeset: empty_changeset)
   end
 
   def start_room(conn, %{"nickname" => nickname}) do
