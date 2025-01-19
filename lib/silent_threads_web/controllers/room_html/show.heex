@@ -9,6 +9,7 @@
         </ul>
     </article>
 </main>
-<form class="flex-shrink-0 p-5 bg-gray-700 border-0">
+<form class="flex-shrink-0 p-5 bg-gray-700 border-0" action={~p"/room/#{@room.id}"} method="post">
+    <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
     <input type="text" name="message" placeholder={gettext("Type your message")} class="bg-gray-100 rounded-xl p-5 text-gray-700 placeholder:text-gray-700 w-full" />
 </form>

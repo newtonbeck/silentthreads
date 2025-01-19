@@ -25,6 +25,7 @@ defmodule SilentThreadsWeb.Router do
     pipe_through :browser
 
     get "/:id", RoomController, :show
+    post "/:id", RoomController, :send_message
   end
 
   # Other scopes may use custom stacks.
