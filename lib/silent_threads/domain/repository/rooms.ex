@@ -6,4 +6,8 @@ defmodule SilentThreads.Domain.Repository.Rooms do
   def create() do
     %Room{} |> Repo.insert()
   end
+
+  def find(id) do
+    Repo.get(Room, id)
+  end
 end

@@ -3,6 +3,7 @@ defmodule SilentThreads.Domain.Model.Participant do
   import Ecto.Changeset
 
   schema "participants" do
+    field :room_id, :integer
     field :nickname, :string
 
     timestamps(type: :utc_datetime)
@@ -11,8 +12,8 @@ defmodule SilentThreads.Domain.Model.Participant do
   @doc false
   def changeset(participant, attrs) do
     participant
-    |> cast(attrs, [:nickname])
-    |> validate_required([:nickname])
+    |> cast(attrs, [:room_id, :nickname])
+    |> validate_required([:room_id, :nickname])
     |> validate_length(:nickname, min: 3, max: 50)
   end
 end
