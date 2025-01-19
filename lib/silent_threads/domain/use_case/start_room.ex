@@ -7,7 +7,7 @@ defmodule SilentThreads.Domain.UseCase.StartRoom do
     Repo.transaction(fn ->
       with {:ok, room} <- Rooms.create(),
            {:ok, participant} <- Participants.join(room, attrs) do
-        {room, participant}
+        %{room: room, participant: participant}
       else
         {:error, e} ->
           Repo.rollback(e)
