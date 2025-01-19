@@ -1,4 +1,4 @@
-<main class="p-5 md:w-1/2 relative">
+<main class="flex-grow overflow-y-auto p-5">
     <article :for={messages_by_author <- SilentThreadsWeb.Controllers.RoomHtml.ViewHelper.group_messages_by_author(@messages, @participants)} class="mb-4">
         <header class="mb-1">
             <span class="text-gray-100">{messages_by_author.author.nickname} {gettext("says")}:</span>
@@ -7,8 +7,8 @@
             <li :for={message <- messages_by_author.messages} class="text-gray-700 bg-gray-100 py-2 px-5 rounded-full max-w-fit">{message.content}</li>
         </ul>
     </article>
-
-    <form class="fixed bottom-0 left-0 w-full p-5 bg-gray-700 border-0">
-        <input type="text" name="message" placeholder={gettext("Type your message")} class="bg-gray-100 rounded-xl p-5 text-gray-700 placeholder:text-gray-700 w-full" />
-    </form>
+    
 </main>
+<form class="flex-shrink-0 p-5 bg-gray-700 border-0">
+    <input type="text" name="message" placeholder={gettext("Type your message")} class="bg-gray-100 rounded-xl p-5 text-gray-700 placeholder:text-gray-700 w-full" />
+</form>
