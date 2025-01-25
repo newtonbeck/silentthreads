@@ -23,7 +23,6 @@ defmodule SilentThreadsWeb.RoomController do
   def send_message(conn, %{"message" => message, "id" => room_id}) do
     case SendMessage.send(room_id, @fake_current_participant, message) do
       {:ok, %{room: room}} ->
-        # TODO Send message to the room channel
         conn |> redirect(to: ~p"/room/#{room.id}")
       {:error, _} ->
         conn
