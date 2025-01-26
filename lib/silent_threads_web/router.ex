@@ -23,9 +23,6 @@ defmodule SilentThreadsWeb.Router do
 
   scope "/room", SilentThreadsWeb do
     pipe_through :browser
-
-    get "/:id", RoomController, :show
-    post "/:id", RoomController, :send_message
   end
 
   scope "/rooms", SilentThreadsWeb do
@@ -33,7 +30,7 @@ defmodule SilentThreadsWeb.Router do
 
     live("/:id", RoomLive.Show, :show)
 
-    get("/:id/join", RoomController, :show_join)
+    get("/:id/join", RoomController, :lobby)
     post("/:id/join", RoomController, :join)
   end
 

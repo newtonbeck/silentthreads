@@ -19,7 +19,7 @@ defmodule SilentThreadsWeb.HomeController do
       {:ok, %{room: room, participant: participant}} ->
         conn
         |> put_session(:participant, participant)
-        |> redirect(to: ~p"/room/#{room.id}")
+        |> redirect(to: ~p"/rooms/#{room.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn |> put_layout(html: :app) |> render(:index, changeset: changeset)
