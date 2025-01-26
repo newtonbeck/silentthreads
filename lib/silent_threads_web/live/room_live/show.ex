@@ -29,8 +29,6 @@ defmodule SilentThreadsWeb.RoomLive.Show do
       current_participant: current_participant
     } = socket.assigns
 
-    IO.inspect(current_participant)
-
     {:ok, %{message: new_message}} = SendMessage.send(room.id, current_participant, message)
     {:noreply, assign(socket, messages: socket.assigns.messages ++ [new_message])}
   end
