@@ -33,12 +33,7 @@
     </ul>
   </article>
 </main>
-<form
-  class="flex-shrink-0 p-5 bg-gray-700 border-0"
-  action={~p"/room/#{@room.id}"}
-  method="post"
-  phx-submit="send_message"
->
+<form class="flex-shrink-0 p-5 bg-gray-700 border-0" phx-submit="send_message">
   <input
     type="text"
     name="message"
