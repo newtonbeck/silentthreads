@@ -1,4 +1,4 @@
-defmodule SilentThreads.Infra.PubSub.MessagesTopic do
+defmodule SilentThreads.Infra.PubSub.RoomsTopic do
   def subscribe(%{id: id}) do
     Phoenix.PubSub.subscribe(SilentThreads.PubSub, "rooms:#{id}")
   end

@@ -2,11 +2,11 @@ defmodule SilentThreadsWeb.RoomLive.Show do
   use SilentThreadsWeb, :live_view
   alias SilentThreads.Domain.UseCase.ShowRoom
   alias SilentThreads.Domain.UseCase.SendMessage
-  alias SilentThreads.Infra.PubSub.MessagesTopic
+  alias SilentThreads.Infra.PubSub.RoomsTopic
 
   def mount(%{"id" => id}, session, socket) do
     if connected?(socket) do
-      MessagesTopic.subscribe(%{id: id})
+      RoomsTopic.subscribe(%{id: id})
     end
 
     current_participant = Map.get(session, "participant")
