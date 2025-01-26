@@ -28,6 +28,12 @@ defmodule SilentThreadsWeb.Router do
     post "/:id", RoomController, :send_message
   end
 
+  scope "/rooms", SilentThreadsWeb do
+    pipe_through :browser
+
+    live("/:id", RoomLive.Show, :show)
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SilentThreadsWeb do
   #   pipe_through :api

@@ -1,0 +1,43 @@
+<main class="flex-grow overflow-y-auto p-5">
+  <article
+    :for={
+      messages_by_participant <-
+        SilentThreadsWeb.Controllers.RoomHtml.ViewHelper.group_messages_by_participant(
+          @messages,
+          @participants
+        )
+    }
+    {SilentThreadsWeb.Controllers.RoomHtml.ViewHelper.own_participant_article_class(messages_by_participant.participant, @current_participant)}
+  >
+    <header class="mb-1">
+      <span
+        :if={messages_by_participant.participant.id == @current_participant.id}
+        class="text-gray-100"
+      >
+        {gettext("You say")}:
+      </span>
+      <span
+        :if={messages_by_participant.participant.id != @current_participant.id}
+        class="text-gray-100"
+      >
+        {messages_by_participant.participant.nickname} {gettext("says")}:
+      </span>
+    </header>
+    <ul {SilentThreadsWeb.Controllers.RoomHtml.ViewHelper.own_participant_ul_class(messages_by_participant.participant, @current_participant)}>
+      <li
+        :for={message <- messages_by_participant.messages}
+        class="text-gray-700 bg-gray-100 py-2 px-5 rounded-full max-w-fit"
+      >
+        {message.content}
+      </li>
+    </ul>
+  </article>
+</main>
+<form class="flex-shrink-0 p-5 bg-gray-700 border-0" action={~p"/room/#{@room.id}"} method="post">
+  <input
+    type="text"
+    name="message"
+    placeholder={gettext("Type your message")}
+    class="bg-gray-100 rounded-xl p-5 text-gray-700 placeholder:text-gray-700 w-full"
+  />
+</form>
