@@ -32,6 +32,8 @@ defmodule SilentThreadsWeb.Router do
     pipe_through :browser
 
     live("/:id", RoomLive.Show, :show)
+
+    get("/:id/join", RoomController, :show_join)
   end
 
   # Other scopes may use custom stacks.

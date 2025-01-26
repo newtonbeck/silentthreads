@@ -1,0 +1,20 @@
+<.flash_group flash={@flash} />
+
+<main class="p-5 md:w-1/2 my-auto md:mx-auto">
+  <form class="flex flex-col gap-4" action={~p"/"} method="post">
+    <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
+    <input
+      type="text"
+      name="nickname"
+      placeholder={gettext("Type your nickname")}
+      value={Map.get(@changeset.params, "nickname", "")}
+      class="bg-gray-100 rounded-xl p-5 text-gray-700 placeholder:text-gray-700"
+    />
+    <div :if={not @changeset.valid?} class="text-white">
+      {translate_errors(@changeset.errors, :nickname)}
+    </div>
+    <button class="bg-blue-500 rounded-xl p-5 text-gray-100 font-medium">
+      {gettext("Join room")}
+    </button>
+  </form>
+</main>
