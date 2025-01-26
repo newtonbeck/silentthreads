@@ -1,10 +1,11 @@
 defmodule SilentThreadsWeb.RoomLive.Show do
   use SilentThreadsWeb, :live_view
   alias SilentThreads.Domain.UseCase.ShowRoom
+  alias SilentThreads.Domain.UseCase.SendMessage
 
-  @fake_current_participant %{id: 30}
+  def mount(%{"id" => id}, session, socket) do
+    current_participant = Map.get(session, "participant")
 
-  def mount(%{"id" => id}, _session, socket) do
     {:ok,
      %{
        room: room,
@@ -15,10 +16,22 @@ defmodule SilentThreadsWeb.RoomLive.Show do
     {:ok,
      assign(
        socket,
-       current_participant: @fake_current_participant,
+       current_participant: current_participant,
        room: room,
        messages: messages,
        participants: participants
      )}
+  end
+
+  def handle_event("send_message", %{"message" => message}, socket) do
+    %{
+      room: room,
+      current_participant: current_participant
+    } = socket.assigns
+
+    IO.inspect(current_participant)
+
+    {:ok, %{message: new_message}} = SendMessage.send(room.id, current_participant, message)
+    {:noreply, assign(socket, messages: socket.assigns.messages ++ [new_message])}
   end
 end
