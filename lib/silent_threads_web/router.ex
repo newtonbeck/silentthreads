@@ -34,6 +34,7 @@ defmodule SilentThreadsWeb.Router do
     live("/:id", RoomLive.Show, :show)
 
     get("/:id/join", RoomController, :show_join)
+    post("/:id/join", RoomController, :join)
   end
 
   # Other scopes may use custom stacks.

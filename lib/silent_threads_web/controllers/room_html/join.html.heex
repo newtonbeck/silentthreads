@@ -1,7 +1,7 @@
 <.flash_group flash={@flash} />
 
 <main class="p-5 md:w-1/2 my-auto md:mx-auto">
-  <form class="flex flex-col gap-4" action={~p"/"} method="post">
+  <form class="flex flex-col gap-4" action={~p"/rooms/#{@room_id}/join"} method="post">
     <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
     <input
       type="text"
