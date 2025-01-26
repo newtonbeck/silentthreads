@@ -1,4 +1,8 @@
 defmodule SilentThreadsWeb.Controllers.RoomHtml.ViewHelper do
+  def group_messages_by_participant([], _participants) do
+    []
+  end
+
   def group_messages_by_participant(all_messages, participants) do
     Enum.reduce(all_messages, [], fn message, acc ->
       case List.last(acc) do

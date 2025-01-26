@@ -1,5 +1,6 @@
 defmodule SilentThreads.Domain.UseCase.JoinRoom do
   alias SilentThreads.Domain.Repository.{Rooms, Participants}
+  alias SilentThreads.Infra.PubSub.RoomsTopic
 
   def join(id, attrs) do
     case Rooms.find(id) do
@@ -9,7 +10,7 @@ defmodule SilentThreads.Domain.UseCase.JoinRoom do
       room ->
         case Participants.join(room, attrs) do
           {:ok, participant} ->
-            # TODO Sent message that participant joined
+            RoomsTopic.broadcast(room, {:new_participant, participant})
             {:ok, %{room: room, participant: participant}}
 
           {:error, e} ->

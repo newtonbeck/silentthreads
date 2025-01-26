@@ -47,4 +47,9 @@ defmodule SilentThreadsWeb.RoomLive.Show do
       {:noreply, assign(socket, messages: messages ++ [new_message])}
     end
   end
+
+  def handle_info({:new_participant, new_participant}, socket) do
+    %{participants: participants} = socket.assigns
+    {:noreply, assign(socket, participants: participants ++ [new_participant])}
+  end
 end
