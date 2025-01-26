@@ -2,8 +2,13 @@ defmodule SilentThreadsWeb.RoomLive.Show do
   use SilentThreadsWeb, :live_view
   alias SilentThreads.Domain.UseCase.ShowRoom
   alias SilentThreads.Domain.UseCase.SendMessage
+  alias SilentThreads.Infra.PubSub.MessagesTopic
 
   def mount(%{"id" => id}, session, socket) do
+    if connected?(socket) do
+      MessagesTopic.subscribe(%{id: id})
+    end
+
     current_participant = Map.get(session, "participant")
 
     {:ok,
@@ -31,5 +36,15 @@ defmodule SilentThreadsWeb.RoomLive.Show do
 
     {:ok, %{message: new_message}} = SendMessage.send(room.id, current_participant, message)
     {:noreply, assign(socket, messages: socket.assigns.messages ++ [new_message])}
+  end
+
+  def handle_info({:new_message, new_message}, socket) do
+    %{messages: messages, current_participant: current_participant} = socket.assigns
+
+    if new_message.author_id == current_participant.id do
+      {:noreply, socket}
+    else
+      {:noreply, assign(socket, messages: messages ++ [new_message])}
+    end
   end
 end
