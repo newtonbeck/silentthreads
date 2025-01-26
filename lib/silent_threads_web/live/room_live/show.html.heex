@@ -1,5 +1,15 @@
 <main class="flex-grow overflow-y-auto p-5">
   <article
+    :if={length(@participants) == 1}
+    class="flex flex-col gap-4 text-gray-100 text-lg text-center font-medium my-auto"
+  >
+    <p class="text-xl">{gettext("You are alone here")}</p>
+    <p>{gettext("Share this room's link with your friends to start chatting")}</p>
+    <button id="share" class="bg-blue-500 rounded-xl p-5 text-gray-100 font-medium">
+      {gettext("Copy room link")}
+    </button>
+  </article>
+  <article
     :for={
       messages_by_participant <-
         SilentThreadsWeb.Controllers.RoomHtml.ViewHelper.group_messages_by_participant(
@@ -41,3 +51,16 @@
     class="bg-gray-100 rounded-xl p-5 text-gray-700 placeholder:text-gray-700 w-full"
   />
 </form>
+<script>
+  const share = document.querySelector("#share")
+
+  share?.addEventListener("click", () => {
+    navigator.clipboard.writeText(`${window.location.href}/join`)
+    setTimeout(() => {
+      share.textContent = "<%= gettext("Link copied") %>"
+      setTimeout(() => {
+        share.textContent = "<%= gettext("Copy room link") %>"
+      }, 2000)
+    }, 0)
+  })
+</script>
